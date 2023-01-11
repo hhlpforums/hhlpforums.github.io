@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Door access #8F4A51D0</title>
+		<style>
+			body { margin: 0; }
+		</style>
+	</head>
+	<body>
+	<audio src="sounds/backrooms.ogg" autoplay="true" loop="true" id="ambience"></audio>
+		<script src="js/three.js"></script>
+		<script src="js/controls.js"></script>
+	
+		<script>
+		var x = document.getElementById("ambience");
+
+function ambience() {
+  x.play();
+}
+		THREE.ImageUtils.crossOrigin = "";
+			const scene = new THREE.Scene();
+			const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
+
+			const renderer = new THREE.WebGLRenderer();
+			renderer.setSize( window.innerWidth, window.innerHeight );
+			document.body.appendChild( renderer.domElement );
+			
+			const textureLoader = new THREE.TextureLoader();
+			
+			const texture_carpet = textureLoader.load("/textures/accden.png");
+			texture_carpet.wrapS = texture_carpet.wrapT = THREE.RepeatWrapping; 
+			texture_carpet.repeat.set( 16, 16 );
+			
+			const texture_wallpaper = textureLoader.load("/textures/bintexture.png");
+			texture_wallpaper.wrapS = texture_wallpaper.wrapT = THREE.RepeatWrapping; 
+			texture_wallpaper.repeat.set( 20, 8 );
+			
+			const texture_door = textureLoader.load("/textures/door.jpg");
+			const texture_exitdoor = textureLoader.load("/textures/exitdoor.png");
+			
+			const floor = new THREE.Mesh( new THREE.PlaneGeometry( 20, 20), new THREE.MeshBasicMaterial( { color: 0x000000 } ));
+			floor.position.y = -2;
+			floor.rotation.x = -1.5708;
+			scene.add( floor );
+			
+			const wall1 = new THREE.Mesh( new THREE.PlaneGeometry( 20, 8), new THREE.MeshBasicMaterial( { map: texture_wallpaper } ));
+			wall1.position.z = -10;
+			scene.add( wall1 );
+			
+			const ceiling = new THREE.Mesh( new THREE.PlaneGeometry( 20, 20), new THREE.MeshBasicMaterial( { color: 0x000000 } ));
+			ceiling.position.y = 2;
+			ceiling.rotation.x = 1.5708;
+			scene.add( ceiling );
+			
+			const wall5 = new THREE.Mesh( new THREE.BoxGeometry( 1.5, 3, 0.2),  new THREE.MeshBasicMaterial( { map: texture_door } ));
+			wall5.position.z = -10.05;
+			wall5.position.y = -0.5;
+			scene.add( wall5 );
+			
+			const wall6 = new THREE.Mesh( new THREE.BoxGeometry( 5, 10, 0.2),  new THREE.MeshBasicMaterial( { map: texture_exitdoor } ));
+			wall6.position.z = 10.05;
+			wall6.position.y = 50;
+			scene.add( wall6 );
+			
+			const room = new THREE.Mesh( new THREE.BoxGeometry( -20, -20, -20),  new THREE.MeshBasicMaterial( { map: texture_carpet } ));
+			room.position.y = 55;
+			scene.add( room );
+
+			camera.position.z = 9;
+
+var promptcck = 0;
+
+			function animate() {
+			
+			if(camera.position.x > -2 && camera.position.x < 2 && camera.position.z < -9 && promptcck == 0){
+var pwd = prompt("Contraseña para acceder mas alla de la puerta", "");
+var errprmpt = alert("contraseña incorrecta");
+camera.position.y = 50;
+promptcck = 1;
+}
+
+if(camera.position.x > -3 && camera.position.x < 3 && camera.position.z > 8.5 && camera.position.y == 50){
+location.replace("https:hhlpforums.github.io")
+}
+				requestAnimationFrame( animate );
+				
+				checkkeys();
+				
+				
+				renderer.render( scene, camera );
+				if(wall1.position.y > -2){
+				wall1.position.y -= 0.05;
+				}else{
+				wall1.position.y = 2;
+				}
+				
+				if(camera.position.x > 9.5){
+				camera.position.x = 9.5;
+				}
+				if(camera.position.z > 9.5){
+				camera.position.z = 9.5;
+				}
+				if(camera.position.x < -9.5){
+				camera.position.x = -9.5;
+				}
+				if(camera.position.z < -9.5){
+				camera.position.z = -9.5;
+				}
+			};
+
+			animate();
+			
+var activekeys = [0,0,0,0,0,0];
+			
+  document.onkeydown = function (e) {
+  if(e.key=="w"){
+  activekeys[0] = 1;
+  }else if(e.key=="a"){
+  activekeys[1] = 1;
+  }else if(e.key=="s"){
+  activekeys[2] = 1;
+  }else if(e.key=="d"){
+  activekeys[3] = 1;
+  }else if(e.key=="ArrowRight"){
+  activekeys[4] = 1;
+  }else if(e.key=="ArrowLeft"){
+  activekeys[5] = 1;
+  }else if(e.key =="h") {
+  ambience();
+  }
+};
+
+document.onkeyup = function (e) {
+  if(e.key=="w"){
+  activekeys[0] = 0;
+  }else if(e.key=="a"){
+  activekeys[1] = 0;
+  }else if(e.key=="s"){
+  activekeys[2] = 0;
+  }else if(e.key=="d"){
+  activekeys[3] = 0;
+  }else if(e.key=="ArrowRight"){
+  activekeys[4] = 0;
+  }else if(e.key=="ArrowLeft"){
+  activekeys[5] = 0;
+  }
+};
+
+function checkkeys() {
+if(activekeys[0] == 1){
+camera.translateZ(-0.05);
+}
+
+if(activekeys[1] == 1){
+camera.translateX(-0.05);
+}
+
+if(activekeys[2] == 1){
+camera.translateZ(0.05);
+}
+
+if(activekeys[3] == 1){
+camera.translateX(0.05);
+}
+
+if(activekeys[4] == 1){
+camera.rotation.y -= 0.02;
+}
+
+if(activekeys[5] == 1){
+camera.rotation.y += 0.02;
+}
+}
+
+	
+
+		</script>
+	</body>
+</html>
