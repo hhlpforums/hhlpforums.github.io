@@ -57,12 +57,16 @@ var promptcck = 0;
 			function animate() {
 			if(camera.position.x > -2 && camera.position.x < 2 && camera.position.z < -9 && promptcck == 0){
 var pwd = prompt("Contraseña para acceder mas alla de la puerta", "");
+if(pwd == "fardinhosenhas"){
+location.replace("https://www.reddit.com/r/hhlpsecrets/");
+}else{
 var errprmpt = alert("contraseña incorrecta");
 camera.position.y = 50;
 promptcck = 1;
 }
+}
 if(camera.position.x > -3 && camera.position.x < 3 && camera.position.z > 8.5 && camera.position.y == 50){
-location.replace("https:hhlpforums.github.io")
+location.replace("https:hhlpforums.github.io");
 }
 				requestAnimationFrame( animate );
 				checkkeys();
