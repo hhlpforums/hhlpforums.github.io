@@ -54,8 +54,15 @@ background-color: gray;
 <img height="108" width="192" src="LOGO.png"></img>
 <div><font size="1" face="verdana" color="red" id="Search"></font></div>
 <div><input id="sbar"> <button onclick="myFunction()">Buscar</button></div>
-<script src="searchscript.js">
-</script>
+	<script>
+function myFunction() {
+	if(document.getElementById("sbar").value == "hack door"){
+		window.location.replace("https://www.youtube.com/watch?v=PWyWyoBwy3w");
+	}else{
+  document.getElementById("Search").innerHTML = "Dont't be a cheater. Nobody likes cheaters";
+}
+}
+	</script>
 <div class="topnav">
   <a class="active" href="https://www.youtube.com/watch?v=PWyWyoBwy3w">no</a>
 </div>
