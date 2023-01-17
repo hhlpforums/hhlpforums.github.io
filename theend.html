@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>The End</title>
+		<style>
+			body { margin: 0; }
+			canvas {
+			position: absolute;
+			z-index: 1;
+			}
+			#content {
+			position: relative;
+			z-index: 999;
+			text-align: center;
+			}
+			#book0p0{
+			height: 20%;
+			width: 20%;
+			}
+		</style>
+	</head>
+	<body>
+		<audio src="backrooms.ogg" autoplay="true" loop="true" id="ambience"></audio>
+		<audio src="step_stone.mp3" autoplay="true" loop="true" id="step"></audio>
+		<audio src="step_stone.mp3" id="step" loop autoplay></audio>
+		<script src="three.js"></script>
+		<script src="controls.js"></script>
+	
+		<script>
+		//preparing sound system
+var step_stone = document.getElementById("step");
+var ambience = document.getElementById("ambience");
+ambienceon = 0;
+function playambience(){
+	if(ambienceon == 0){
+	ambience.play();
+	ambienceon = 1;
+	}
+};
+		//loading essentials
+		THREE.ImageUtils.crossOrigin = "";
+			const scene = new THREE.Scene();
+			const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
+			const renderer = new THREE.WebGLRenderer();
+			renderer.setSize( window.innerWidth, window.innerHeight );
+			document.body.appendChild( renderer.domElement );
+			//loading textures
+			const textureLoader = new THREE.TextureLoader();
+			const texture_carpet = textureLoader.load("carpet.png");
+			texture_carpet.wrapS = texture_carpet.wrapT = THREE.RepeatWrapping; 
+			texture_carpet.repeat.set( 16, 16 );
+			const texture_whiteconcrete = textureLoader.load("whiteconcrete.jpg");
+			texture_whiteconcrete.wrapS = texture_whiteconcrete.wrapT = THREE.RepeatWrapping; 
+			texture_whiteconcrete.repeat.set( 16, 4 );
+			const texture_book00 = textureLoader.load("book00.png");
+			const texture_book01 = textureLoader.load("book01.png");
+			const texture_ceiling = textureLoader.load("ceiling.jpg");
+			texture_ceiling.wrapS = texture_ceiling.wrapT = THREE.RepeatWrapping; 
+			texture_ceiling.repeat.set( 16, 16 );
+			const texture_wood = textureLoader.load("wood.jpg");
+			const texture_screen0 = textureLoader.load("screen0.png");
+			const texture_screen1 = textureLoader.load("screen1.png");
+			const texture_keyboard = textureLoader.load("keyboard.png");
+			const texture_cpu = textureLoader.load("cpu.png");
+			const texture_theend = textureLoader.load("theend.png");
+			const texture_door = textureLoader.load("door.png");
+			const texture_fabric = textureLoader.load("fabric.jpg");
+			const texLoader = new THREE.TextureLoader();
+			//declaring geometry
+			const floor = new THREE.Mesh( new THREE.PlaneGeometry( 20, 20), new THREE.MeshBasicMaterial( { map: texture_carpet } ));
+			floor.position.y = -2;
+			floor.rotation.x = -1.5708;
+			scene.add( floor );
+			const wall1 = new THREE.Mesh( new THREE.PlaneGeometry( 20, 4), new THREE.MeshBasicMaterial( { map: texture_whiteconcrete } ));
+			wall1.position.z = -10;
+			scene.add( wall1 );
+			const wall2 = new THREE.Mesh( new THREE.PlaneGeometry( 20, 4), new THREE.MeshBasicMaterial( { map: texture_whiteconcrete } ));
+			wall2.position.x = 10;
+			wall2.rotation.y = -1.5708;
+			scene.add( wall2 );
+			const wall3 = new THREE.Mesh( new THREE.PlaneGeometry( 20, 4), new THREE.MeshBasicMaterial( { map: texture_whiteconcrete } ));
+			wall3.position.x = -10;
+			wall3.rotation.y = 1.5708;
+			scene.add( wall3 );
+			const wall4 = new THREE.Mesh( new THREE.PlaneGeometry( 20, 4), new THREE.MeshBasicMaterial( { map: texture_whiteconcrete } ));
+			wall4.position.z = 10;
+			wall4.rotation.y = 3.14159;
+			scene.add( wall4 );
+			const wall6 = new THREE.Mesh( new THREE.PlaneGeometry( 20, 1), new THREE.MeshBasicMaterial( { color: 0xff7f00 } ));
+			wall6.position.y = 1.5;
+			scene.add( wall6 );
+			const text = new THREE.Mesh( new THREE.PlaneGeometry( 3.2, 0.8), new THREE.MeshBasicMaterial( { map: texture_theend } ));
+			text.position.y = 1.5;
+			text.position.z = 0.01;
+			scene.add( text );
+			const ceiling = new THREE.Mesh( new THREE.PlaneGeometry( 20, 20), new THREE.MeshBasicMaterial( { map: texture_ceiling } ));
+			ceiling.position.y = 2;
+			ceiling.rotation.x = 1.5708;
+			scene.add( ceiling );
+			const ceiling1 = new THREE.Mesh( new THREE.PlaneGeometry( 20, 20), new THREE.MeshBasicMaterial( { map: texture_ceiling } ));
+			ceiling1.position.z = -10;
+			ceiling1.position.y = 1;
+			ceiling1.rotation.x = 1.5708;
+			scene.add( ceiling1 );
+			const door = new THREE.Mesh( new THREE.PlaneGeometry( 1, 2),  new THREE.MeshBasicMaterial( { map: texture_door } ));
+			door.position.y = -1;
+			door.position.z = 5;
+			door.position.x = 9.999;
+			door.rotation.y = -1.5708;
+			scene.add( door );
+			const table0 = new THREE.Mesh( new THREE.BoxGeometry( 2, 0.08, 1), new THREE.MeshBasicMaterial( { map: texture_wood } ));
+			table0.position.y = -1.2;
+			scene.add( table0 );
+			const table1 = new THREE.Mesh( new THREE.BoxGeometry( 1.4, 0.8, 0.2), new THREE.MeshBasicMaterial( { map: texture_wood } ));
+			table1.position.y = -1.6;
+			table1.position.z = 0.3;
+			scene.add( table1 );
+			const table2 = new THREE.Mesh( new THREE.BoxGeometry( 0.2, 0.8, 0.8), new THREE.MeshBasicMaterial( { map: texture_wood } ));
+			table2.position.y = -1.6;
+			table2.position.x = 0.8;
+			scene.add( table2 );
+			const table3 = new THREE.Mesh( new THREE.BoxGeometry( 0.2, 0.8, 0.8), new THREE.MeshBasicMaterial( { map: texture_wood } ));
+			table3.position.y = -1.6;
+			table3.position.x = -0.8;
+			scene.add( table3 );
+			couch0 = new THREE.Mesh( new THREE.BoxGeometry( 0.6, 0.6, 0.1), new THREE.MeshBasicMaterial( { map: texture_fabric } ));
+			couch0.position.z = 9.5;
+			couch0.position.y = -1.4;
+			scene.add( couch0 );
+			couch1 = new THREE.Mesh( new THREE.BoxGeometry( 0.6, 0.5, 0.1), new THREE.MeshBasicMaterial( { map: texture_fabric } ));
+			couch1.position.z = 9.2;
+			couch1.position.y = -1.65;
+			couch1.rotation.x = 1.5708;
+			scene.add( couch1 );
+			couch2 = new THREE.Mesh( new THREE.BoxGeometry( 0.1, 0.05, 0.6), new THREE.MeshBasicMaterial( { color: 0x704A35 } ));
+			couch2.position.x = 0.35;
+			couch2.position.z = 9.25;
+			couch2.position.y = -1.5;
+			scene.add( couch2 );
+			couch3 = new THREE.Mesh( new THREE.BoxGeometry( 0.1, 0.05, 0.6), new THREE.MeshBasicMaterial( { color: 0x704A35 } ));
+			couch3.position.x = 0.35;
+			couch3.position.z = 9.25;
+			couch3.position.y = -1.975;
+			scene.add( couch3 );
+			couch4 = new THREE.Mesh( new THREE.BoxGeometry( 0.1, 0.5, 0.05), new THREE.MeshBasicMaterial( { color: 0x704A35 } ));
+			couch4.position.x = 0.35;
+			couch4.position.z = 9.525;
+			couch4.position.y = -1.75;
+			scene.add( couch4 );
+			couch5 = new THREE.Mesh( new THREE.BoxGeometry( 0.1, 0.5, 0.05), new THREE.MeshBasicMaterial( { color: 0x704A35 } ));
+			couch5.position.x = 0.35;
+			couch5.position.z = 8.975;
+			couch5.position.y = -1.75;
+			scene.add( couch5 );
+			couch6 = new THREE.Mesh( new THREE.BoxGeometry( 0.1, 0.05, 0.6), new THREE.MeshBasicMaterial( { color: 0x704A35 } ));
+			couch6.position.x = -0.35;
+			couch6.position.z = 9.25;
+			couch6.position.y = -1.5;
+			scene.add( couch6 );
+			couch7 = new THREE.Mesh( new THREE.BoxGeometry( 0.1, 0.05, 0.6), new THREE.MeshBasicMaterial( { color: 0x704A35 } ));
+			couch7.position.x = -0.35;
+			couch7.position.z = 9.25;
+			couch7.position.y = -1.975;
+			scene.add( couch7 );
+			couch8 = new THREE.Mesh( new THREE.BoxGeometry( 0.1, 0.5, 0.05), new THREE.MeshBasicMaterial( { color: 0x704A35 } ));
+			couch8.position.x = -0.35;
+			couch8.position.z = 9.525;
+			couch8.position.y = -1.75;
+			scene.add( couch8 );
+			couch9 = new THREE.Mesh( new THREE.BoxGeometry( 0.1, 0.5, 0.05), new THREE.MeshBasicMaterial( { color: 0x704A35 } ));
+			couch9.position.x = -0.35;
+			couch9.position.z = 8.975;
+			couch9.position.y = -1.75;
+			scene.add( couch9 );
+			const cpu0 = new THREE.Mesh( new THREE.BoxGeometry( 0.25, 0.5, 0.5), new THREE.MeshBasicMaterial( { map: texture_screen1 } ));
+			cpu0.position.y = -1.75;
+			cpu0.position.z = -0.1;
+			cpu0.rotation.y = 0.785398;
+			scene.add( cpu0 );
+			const cpu1 = new THREE.Mesh( new THREE.PlaneGeometry( 0.25, 0.5), new THREE.MeshBasicMaterial( { color: 0xDED7B7 } ));
+			cpu1.position.y = -1.4999;
+			cpu1.position.z = -0.1;
+			cpu1.rotation.x = -1.5708;
+			cpu1.rotation.z = 0.785398;
+			scene.add( cpu1 );
+			const cpu2 = new THREE.Mesh( new THREE.PlaneGeometry( 0.25, 0.5), new THREE.MeshBasicMaterial( { map: texture_cpu } ));
+			cpu2.position.y = -1.75;
+			cpu2.position.z = -0.1;
+			cpu2.rotation.y = -2.356194;
+			cpu2.translateZ(0.2501);
+			scene.add( cpu2 );
+			const screen = new THREE.Mesh( new THREE.BoxGeometry( 0.5, 0.5, 0.3), new THREE.MeshBasicMaterial( { map: texture_screen1 } ) );
+			screen.position.z = 0;
+			screen.position.x = -0.6;
+			screen.position.y = -0.91;
+			scene.add( screen );
+			const screen1 = new THREE.Mesh( new THREE.PlaneGeometry( 0.5, 0.5, 1), new THREE.MeshBasicMaterial( { map: texture_screen0 } ) );
+			screen1.position.z = 0.151;
+			screen1.position.x = -0.6;
+			screen1.position.y = -0.9;
+			scene.add( screen1 );
+			const screen2 = new THREE.Mesh( new THREE.BoxGeometry( 0.4, 0.4, 0.3), new THREE.MeshBasicMaterial( { map: texture_screen1 } ) );
+			screen2.position.z = -0.15;
+			screen2.position.x = -0.6;
+			screen2.position.y = -1.05;
+			scene.add( screen2 );
+			const keyboard = new THREE.Mesh( new THREE.PlaneGeometry( 0.5, 0.25, 1), new THREE.MeshBasicMaterial( { map: texture_keyboard } ) );
+			keyboard.rotation.x = -1.5708;
+			keyboard.position.z = 0.3;
+			keyboard.position.x = -0.6;
+			keyboard.position.y = -1.159;
+			scene.add( keyboard );
+			const book0 = new THREE.Mesh( new THREE.BoxGeometry( 0.099, 0.0499, 0.199), new THREE.MeshBasicMaterial( { color: 0x8F8F8F } ));
+			book0.position.y = -1.19;
+			book0.position.z = 0.125;
+			book0.position.x = 3;
+			book0.rotation.y = 0.785398;
+			scene.add( book0 );
+			const book0a = new THREE.Mesh( new THREE.PlaneGeometry( 0.1, 0.2), new THREE.MeshBasicMaterial( { map: texture_book00 } ));
+			book0a.position.y = -1.165;
+			book0a.position.z = 0.125;
+			book0a.position.x = 3;
+			book0a.rotation.z = 0.785398;
+			book0a.rotation.x = -1.5708;
+			scene.add( book0a );
+			const book0b = new THREE.Mesh( new THREE.PlaneGeometry( 0.05, 0.2), new THREE.MeshBasicMaterial( { map: texture_book00 } ));
+			book0b.position.y = -1.19;
+			book0b.position.z = 0.125;
+			book0b.position.x = 3;
+			book0b.rotation.y = -0.785398;
+			book0b.rotation.z = 1.5708;
+			book0b.translateZ(0.05);
+			scene.add( book0b );
+			function shelf(mx, my, mz, mr){
+			box0 = new THREE.Mesh( new THREE.BoxGeometry( 1, 1.5, 0.04), new THREE.MeshBasicMaterial( { map: texture_wood } ));
+			box0.position.x = 0+mx;
+			box0.position.y = 0+my;
+			box0.position.z = 0+mz;
+			box0.rotation.y = 0+mr;
+			scene.add( box0 );
+			box0 = new THREE.Mesh( new THREE.BoxGeometry( 1, 0.04, 0.5), new THREE.MeshBasicMaterial( { map: texture_wood } ));
+			box0.position.x = 0+mx;
+			box0.position.y = 0+my;
+			box0.position.z = 0+mz;
+			box0.rotation.y = 0+mr;
+			scene.add( box0 );
+			box0 = new THREE.Mesh( new THREE.BoxGeometry( 1, 0.04, 0.5), new THREE.MeshBasicMaterial( { map: texture_wood } ));
+			box0.position.x = 0+mx;
+			box0.position.y = -0.375+my;
+			box0.position.z = 0+mz;
+			box0.rotation.y = 0+mr;
+			scene.add( box0 );
+			box0 = new THREE.Mesh( new THREE.BoxGeometry( 1, 0.04, 0.5), new THREE.MeshBasicMaterial( { map: texture_wood } ));
+			box0.position.x = 0+mx;
+			box0.position.y = -0.73+my;
+			box0.position.z = 0+mz;
+			box0.rotation.y = 0+mr;
+			scene.add( box0 );
+			box0 = new THREE.Mesh( new THREE.BoxGeometry( 1, 0.04, 0.5), new THREE.MeshBasicMaterial( { map: texture_wood } ));
+			box0.position.x = 0+mx;
+			box0.position.y = 0.375+my;
+			box0.position.z = 0+mz;
+			box0.rotation.y = 0+mr;
+			scene.add( box0 );
+			}
+			shelf(3, -1.25, 0, 0);
+			shelf(6, -1.25, -4, 0);
+			shelf(8, -1.25, -2, 0);
+			shelf(8, -1.25, 0, 0);
+			shelf(-7, -1.25, -6, 0);
+			shelf(-4, -1.25, -6, 0);
+			shelf(-4, -1.25, -3, 0);
+			camera.position.z = 1;
+			camera.position.x = -0.5;
+			camera.position.y = -1;
+			//book area list
+			books = [
+			[4, 1, 2, -1, "book0p0"],
+			]
+			var bookopen = -1;
+			//collisions list
+			collisions = [
+			[12, -9.5, -12, -12],
+			[12, 12, -12, 9.5],
+			[-9.5, 10, -12, -10],
+			[12, 10, 9.5, -10],
+			[0.5, 9.5, -0.5, 8.5],
+			[1.25, 0.75, -1.25, -0.75],
+			[3.75, 0.5, 2.25, -0.5],
+			[8.75, 0.5, 7.25, -0.5],
+			[8.75, -1.5, 7.25, -2.5],
+			[6.75, -3.5, 5.25, -4.5],
+			[-6.25, -5.5, -7.75, -6.5],
+			[-3.25, -5.5, -4.75, -6.5],
+			[-3.25, -2.5, -4.75, -3.5],
+			];
+			//game loop
+			function animate() {
+			checkkeys();
+				requestAnimationFrame( animate );
+
+				renderer.render( scene, camera );
+			};
+			animate();
+			//check if player is on a book area & open it
+			function checkbooks(){
+			for(i = 0; i < books.length; i++){
+if(books[i][0] > camera.position.x && books[i][1] > camera.position.z && books[i][2] < camera.position.x && books[i][3] < camera.position.z){
+console.log("debug");
+tempbookid = books[i][4]
+if(bookopen == i){
+document.getElementById(tempbookid).setAttribute("hidden", true);
+bookopen = -1;
+}else{
+document.getElementById(tempbookid).removeAttribute("hidden");
+bookopen = i;
+}
+}
+}
+			}
+//controls
+var activekeys = [0,0,0,0,0,0,];
+  document.onkeydown = function (e) {
+  if(e.key=="w"){
+  activekeys[0] = 1;
+  }else if(e.key=="a"){
+  activekeys[1] = 1;
+  }else if(e.key=="s"){
+  activekeys[2] = 1;
+  }else if(e.key=="d"){
+  activekeys[3] = 1;
+  }else if(e.key=="ArrowRight"){
+  activekeys[4] = 1;
+  }else if(e.key=="ArrowLeft"){
+  activekeys[5] = 1;
+  }else if(e.key =="h") {
+  playambience();
+  }else if(e.key =="e") {
+  checkbooks();
+}
+playambience();
+};
+document.onkeyup = function (e) {
+  if(e.key=="w"){
+  activekeys[0] = 0;
+  }else if(e.key=="a"){
+  activekeys[1] = 0;
+  }else if(e.key=="s"){
+  activekeys[2] = 0;
+  }else if(e.key=="d"){
+  activekeys[3] = 0;
+  }else if(e.key=="ArrowRight"){
+  activekeys[4] = 0;
+  }else if(e.key=="ArrowLeft"){
+  activekeys[5] = 0;
+  }
+};
+//moving the player & detecting collisions at the same time
+function checkkeys() {
+if(activekeys[0] == 1){
+camera.translateZ(-0.05);
+for(i = 0; i < collisions.length; i++){
+if(collisions[i][0] > camera.position.x && collisions[i][1] > camera.position.z && collisions[i][2] < camera.position.x && collisions[i][3] < camera.position.z){
+camera.translateZ(0.05);
+}
+}
+}
+if(activekeys[1] == 1){
+camera.translateX(-0.05);
+for(let i = 0; i < collisions.length; i++){
+if(collisions[i][0] > camera.position.x && collisions[i][1] > camera.position.z && collisions[i][2] < camera.position.x && collisions[i][3] < camera.position.z){
+camera.translateX(0.05);
+}
+}
+}
+if(activekeys[2] == 1){
+camera.translateZ(0.05);
+for(let i = 0; i < collisions.length; i++){
+if(collisions[i][0] > camera.position.x && collisions[i][1] > camera.position.z && collisions[i][2] < camera.position.x && collisions[i][3] < camera.position.z){
+camera.translateZ(-0.05);
+}
+}
+}
+if(activekeys[3] == 1){
+camera.translateX(0.05);
+for(let i = 0; i < collisions.length; i++){
+if(collisions[i][0] > camera.position.x && collisions[i][1] > camera.position.z && collisions[i][2] < camera.position.x && collisions[i][3] < camera.position.z){
+camera.translateX(-0.05);
+}
+}
+}
+
+if(activekeys[4] == 1){
+camera.rotation.y -= 0.03;
+}
+
+if(activekeys[5] == 1){
+camera.rotation.y += 0.03;
+}
+
+if(activekeys[0] == 1 || activekeys[1] == 1 || activekeys[2] == 1 || activekeys[3] == 1){
+step_stone.play();
+}else{
+step_stone.pause();
+}
+}
+//under the script: book gui's
+		</script>
+		<div id="content"><img hidden src="placeholder.png" id="book0p0"></img></div>
+	</body>
+</html>
