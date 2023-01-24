@@ -66,7 +66,8 @@ function playambience(){
 			const texture_theend = textureLoader.load("theend.png");
 			const texture_door = textureLoader.load("door.png");
 			const texture_fabric = textureLoader.load("fabric.jpg");
-			const texLoader = new THREE.TextureLoader();
+			const texture_poster = textureLoader.load("/textures/poster.png");
+			const textureLoader = new THREE.TextureLoader();
 			//declaring geometry
 			const floor = new THREE.Mesh( new THREE.PlaneGeometry( 20, 20), new THREE.MeshBasicMaterial( { map: texture_carpet } ));
 			floor.position.y = -2;
@@ -211,6 +212,11 @@ function playambience(){
 			keyboard.position.x = -0.6;
 			keyboard.position.y = -1.159;
 			scene.add( keyboard );
+			const poster = new THREE.Mesh( new THREE.PlaneGeometry( 2.2, 2.2), new THREE.MeshBasicMaterial( { map: texture_poster } ));
+			poster.position.z = 9.99;
+			poster.position.x = -3.146942066633369;
+			poster.rotation.y = 3.141592;
+			scene.add( poster );
 			const book0 = new THREE.Mesh( new THREE.BoxGeometry( 0.099, 0.0499, 0.199), new THREE.MeshBasicMaterial( { color: 0x8F8F8F } ));
 			book0.position.y = -1.19;
 			book0.position.z = 0.125;
@@ -299,7 +305,6 @@ function playambience(){
 			function animate() {
 			checkkeys();
 				requestAnimationFrame( animate );
-
 				renderer.render( scene, camera );
 			};
 			animate();
@@ -307,7 +312,6 @@ function playambience(){
 			function checkbooks(){
 			for(i = 0; i < books.length; i++){
 if(books[i][0] > camera.position.x && books[i][1] > camera.position.z && books[i][2] < camera.position.x && books[i][3] < camera.position.z){
-console.log("debug");
 tempbookid = books[i][4]
 if(bookopen == i){
 document.getElementById(tempbookid).setAttribute("hidden", true);
@@ -390,21 +394,19 @@ camera.translateX(-0.05);
 }
 }
 }
-
 if(activekeys[4] == 1){
 camera.rotation.y -= 0.03;
 }
-
 if(activekeys[5] == 1){
 camera.rotation.y += 0.03;
 }
-
 if(activekeys[0] == 1 || activekeys[1] == 1 || activekeys[2] == 1 || activekeys[3] == 1){
 step_stone.play();
 }else{
 step_stone.pause();
 }
 }
+			console.log("DEJA DE MIRAR LA CONSOLA PEL0YUD0-POIR VO X23");
 //under the script: book gui's
 		</script>
 		<div id="content"><img hidden src="placeholder.png" id="book0p0"></img></div>
