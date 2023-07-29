@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // URLs a las que se redirigirá al hacer clic en cada rectángulo
   const urls = [
     'url27.html',
-    'url27.html'
+    'url27.html',
     'url27.html',
     'url27.html',
     'url27.html',
