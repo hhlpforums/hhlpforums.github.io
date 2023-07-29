@@ -16,7 +16,6 @@ document.addEventListener('DOMContentLoaded', () => {
     'url27.html',
     'url27.html',
     'url27.html',
-    'url27.html',
     'url5.html',
     'url27.html',
     'url27.html',
@@ -30,6 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
     'url27.html',
     'url27.html',
     'url27.html',
+    'url27.html'
     // ... Agrega las URLs de las páginas a las que quieres redirigir
   ];
 
