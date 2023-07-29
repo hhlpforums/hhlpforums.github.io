@@ -17,7 +17,7 @@ const videos = [
   {
     id: "i78ZEQ_CtdI",
     title: "one more last trailer",
-    description: "Salido el 17 de febrero de 2022, trailer extra de HHLP3.0 que nos muestra la fecha de salida de la última entrega de la saga además de un ser misterioso que se nos presentará más adelante. VIDEO NO DISPONIBLE EN LA PÁGINA WEB, VER EN YOUTUBE.",
+    description: "Salido el 17 de febrero de 2022, trailer extra de HHLP3.0 que nos muestra la fecha de salida de la última entrega de la saga además de un ser misterioso que se nos presentará más adelante.",
   },
   {
     id: "oDpZPRfNaBM",
