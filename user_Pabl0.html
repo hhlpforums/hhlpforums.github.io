@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Perfil de Pabl0 - HHLP Fan Forum</title>
+  <meta charset="UTF-8"> <!-- Metaetiqueta para aceptar caracteres UTF-8 -->
+
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.topnav {
+  overflow: hidden;
+  background-color: #333;
+}
+
+.topnav a {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.topnav a.active {
+  background-color: #04AA6D;
+  color: white;
+}
+</style>
+</head>
+<body>
+<div><font size="1" face="verdana" color="red" id="Search"></font></div>
+</script>
+<div class="topnav">
+  <a class="active" href="index.html">Inicio</a>
+  <a href="videos.html">Videos</a>
+  <a href="trailers.html">Trailers</a>
+  <a href="hilos.html">Discusión</a>
+  <a href="info.html">Info.Oficial</a>
+  <a href="descargas.html">Descargas</a>
+  <a href="login.html">Login</a>
+</div>
+</body>
+</html>
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-image: url('FondoPabl0.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-attachment: fixed; /* Imagen de fondo fija */
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .container {
+      position: relative; /* Para posicionar el botón */
+      display: flex;
+      max-width: 1000px;
+      margin: 20px auto 0; /* Margen superior de 20 píxeles */
+      padding: 20px;
+      background-color: rgba(192, 192, 192, 0.7); /* Color gris transparente */
+    }
+
+    .profile-image {
+      width: 250px;
+      height: 250px;
+      margin-right: 20px;
+    }
+
+    .content {
+      flex: 1;
+    }
+
+    .name {
+      color: red;
+      font-size: 24px;
+      font-weight: bold; /* Nombre en negrita */
+      margin-bottom: 10px;
+    }
+
+    .description {
+      font-size: 18px;
+      margin-top: 10px;
+    }
+
+    .centered-text {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    /* Estilo del botón */
+    .add-friend-button {
+      position: absolute;
+      bottom: 20px;
+      right: 20px;
+      background-color: #04AA6D;
+      color: white;
+      padding: 10px 15px;
+      border: none;
+      cursor: pointer;
+    }
+
+    /* Estilo del texto de aviso */
+    .warning-text {
+      position: absolute;
+      top: 0;
+      right: 0;
+      color: red;
+      font-size: 12px;
+      padding: 5px 10px;
+      display: none; /* Ocultar el texto por defecto */
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <img class="profile-image" src="Pabl0.png" alt="Imagen ajustada a 250x250">
+    <div class="content">
+      <div class="name">Pabl0</div>
+      <div class="description">Admin. de HHLP Fan Forum</div>
+      <div class="centered-text">Abstenerse de enviar cualquier solicitud de amistad o mensaje. Soy una persona MUY ocupada.<br>Enemigo N°1 de Garry.</div>
+    </div>
+  </div>
+
+  <!-- Botón para añadir como amigo -->
+  <button class="add-friend-button" onclick="showWarning()">Añadir como amigo</button>
+
+  <!-- Texto de aviso -->
+  <div class="warning-text" id="warningText">Debes iniciar sesión para añadir como amigo a un usuario</div>
+
+  <script>
+    function showWarning() {
+      // Mostrar el texto de aviso
+      document.getElementById('warningText').style.display = 'inline';
+
+      // Después de 3 segundos, ocultar el texto de aviso nuevamente
+      setTimeout(function () {
+        document.getElementById('warningText').style.display = 'none';
+      }, 3000);
+    }
+  </script>
+</body>
+</html>
