@@ -1,0 +1,18 @@
+body, html {
+  height: 100%;
+  margin: 0;
+}
+
+.container {
+  position: relative;
+  height: 100%;
+  background-image: url(FondoLH_Original.gif);
+  background-size: cover;
+}
+
+#clickable-element {
+  position: absolute;
+  width: 250px;
+  height: 250px;
+  display: none;
+}
