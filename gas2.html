@@ -40,13 +40,13 @@
 		</style>
 	</head>
 	<body>
-		<audio ssrc="sounds/backrooms.ogg" autoplay="true" loop="true" id="ambience"></audio> 
-		<audio src="/sounds/step_stone.mp3" id="step" loop></audio>
-		<audio src="/sounds/button1.wav" id="btn1"></audio>
-		<audio src="/sounds/denied.wav" id="denied"></audio>
-		<audio src="/sounds/accepted.wav" id="accepted"></audio>
-		<script src="js/three.js"></script>
-		<script src="js/controls.js"></script>
+		<audio ssrc="backrooms.ogg" autoplay="true" loop="true" id="ambience"></audio> 
+		<audio src="step_stone.mp3" id="step" loop></audio>
+		<audio src="button1.wav" id="btn1"></audio>
+		<audio src="denied.wav" id="denied"></audio>
+		<audio src="accepted.wav" id="accepted"></audio>
+		<script src="three.js"></script>
+		<script src="controls.js"></script>
 	
 		<script>
 var step_stone = document.getElementById("step");
@@ -74,42 +74,42 @@ function playambience(){
 			
 			const textureLoader = new THREE.TextureLoader();
 			
-			const texture_grass = textureLoader.load("/textures/grass.png");
+			const texture_grass = textureLoader.load("grass.png");
 			texture_grass.wrapS = texture_grass.wrapT = THREE.RepeatWrapping; 
 			texture_grass.repeat.set( 64, 64 );
 			
-			const texture_asphalt = textureLoader.load("/textures/asphalt.jpg");
+			const texture_asphalt = textureLoader.load("asphalt.jpg");
 			texture_asphalt.wrapS = texture_asphalt.wrapT = THREE.RepeatWrapping; 
 			texture_asphalt.repeat.set( 5, 1 );
 			
-			const texture_panorama = textureLoader.load("/textures/panorama1.png");
+			const texture_panorama = textureLoader.load("panorama1.png");
 			
-			const texture_floor = textureLoader.load("/textures/wood_floor.jpg");
+			const texture_floor = textureLoader.load("wood_floor.jpg");
 			texture_floor.wrapS = texture_floor.wrapT = THREE.RepeatWrapping; 
 			texture_floor.repeat.set( 10, 6 );
 			
-			const texture_tvcode = textureLoader.load("/textures/tvcode.png");
-			const texture_metaldoor = textureLoader.load("/textures/metaldoor.png");
-			const texture_bathdoor = textureLoader.load("/textures/bathroomdoor.png");
-			const texture_wifi = textureLoader.load("/textures/wifi.png");
-			const texture_pump = textureLoader.load("/textures/gaspump.png");
-			const texture_vendingmachine = textureLoader.load("/textures/vending_machine.png");
-			const texture_fridge = textureLoader.load("/textures/fridge.png");
-			const texture_concrete = textureLoader.load("/textures/concrete.jpg");
-			const texture_whiteconcrete = textureLoader.load("/textures/whiteconcrete.jpg");
-			const texture_ceiling = textureLoader.load("/textures/ceiling.jpg");
+			const texture_tvcode = textureLoader.load("tvcode.png");
+			const texture_metaldoor = textureLoader.load("metaldoor.png");
+			const texture_bathdoor = textureLoader.load("bathroomdoor.png");
+			const texture_wifi = textureLoader.load("wifi.png");
+			const texture_pump = textureLoader.load("gaspump.png");
+			const texture_vendingmachine = textureLoader.load("vending_machine.png");
+			const texture_fridge = textureLoader.load("fridge.png");
+			const texture_concrete = textureLoader.load("concrete.jpg");
+			const texture_whiteconcrete = textureLoader.load("whiteconcrete.jpg");
+			const texture_ceiling = textureLoader.load("ceiling.jpg");
 			texture_ceiling.wrapS = texture_ceiling.wrapT = THREE.RepeatWrapping; 
 			texture_ceiling.repeat.set( 16, 16 );
-			const texture_wood = textureLoader.load("/textures/wood.jpg");
-			const texture_screen0 = textureLoader.load("/textures/screen0.png");
-			const texture_screen1 = textureLoader.load("/textures/screen1.png");
-			const texture_keyboard = textureLoader.load("/textures/keyboard.png");
-			const texture_cpu = textureLoader.load("/textures/cpu.png");
-			const texture_door = textureLoader.load("/textures/door.png");
-			const texture_fabric = textureLoader.load("/textures/red_fabric.jpg");
-			const texture_code3 = textureLoader.load("/textures/code3.png");
-			const texture_ovenfront = textureLoader.load("/textures/ovenfront.png");
-			const texture_oventop = textureLoader.load("/textures/oventop.png");
+			const texture_wood = textureLoader.load("wood.jpg");
+			const texture_screen0 = textureLoader.load("screen0.png");
+			const texture_screen1 = textureLoader.load("screen1.png");
+			const texture_keyboard = textureLoader.load("keyboard.png");
+			const texture_cpu = textureLoader.load("cpu.png");
+			const texture_door = textureLoader.load("door.png");
+			const texture_fabric = textureLoader.load("red_fabric.jpg");
+			const texture_code3 = textureLoader.load("code3.png");
+			const texture_ovenfront = textureLoader.load("ovenfront.png");
+			const texture_oventop = textureLoader.load("oventop.png");
 			
 			const texLoader = new THREE.TextureLoader();
 			
