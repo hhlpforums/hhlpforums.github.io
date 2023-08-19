@@ -45,6 +45,7 @@
 		<audio src="button1.wav" id="btn1"></audio>
 		<audio src="denied.wav" id="denied"></audio>
 		<audio src="accepted.wav" id="accepted"></audio>
+		<audio src="ost3.mp3" id="ost3"></audio>
 		<script src="three.js"></script>
 		<script src="controls.js"></script>
 	
@@ -54,6 +55,7 @@ var ambience = document.getElementById("ambience");
 var btn1 = document.getElementById("btn1");
 var denied = document.getElementById("denied");
 var accepted = document.getElementById("accepted");
+var ost3 = document.getElementById("ost3");
 ambienceon = 0;
 function playambience(){
 	if(ambienceon == 0){
@@ -422,12 +424,22 @@ function playambience(){
 			checkkeys();
 			moveEnv();
 			checkexit();
+			ostplay();
 				requestAnimationFrame( animate );
 
 				renderer.render( scene, camera );
 			};
 
 			animate();
+
+			ostplaying = false;
+			function ostplay() {
+			if(camera.position.z < -6 && ostplaying == false){
+			ost3.play();
+			console.log("ost3 playing");
+			ostplaying = true;
+			}
+			}
 			
 			function moveEnv(){
 			panorama.position.x = camera.position.x;
